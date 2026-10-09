@@ -1,0 +1,28 @@
+[
+  {
+    "id": "beg_01",
+    "translation": "คุณช่วยส่งเกลือให้ฉันหน่อยได้ไหม",
+    "words": ["Could", "you", "pass", "me", "the", "salt,", "please?"],
+    "correct_sentence": "Could you pass me the salt, please?",
+    "valid_chunks": [
+      ["Could", "you"],
+      ["pass", "me"],
+      ["the", "salt,"]
+    ],
+    "explanation": "โครงสร้างการขอร้องอย่างสุภาพ [Modal + Subject] + [Verb + Object] + [Noun Phrase]"
+  },
+  {
+    "id": "beg_02",
+    "translation": "พวกเขากำลังเล่นฟุตบอลในสวนสาธารณะเมื่อฝนเริ่มตก",
+    "words": ["They", "were", "playing", "football", "in", "the", "park", "when", "it", "started", "to", "rain."],
+    "correct_sentence": "They were playing football in the park when it started to rain.",
+    "valid_chunks": [
+      ["They", "were"],
+      ["playing", "football"],
+      ["in", "the park"],
+      ["when", "it"],
+      ["started", "to rain."]
+    ],
+    "explanation": "โครงสร้าง Past Continuous (เหตุการณ์กำลังดำเนินอยู่) + Past Simple (เหตุการณ์แทรกซ้อน)"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "adv_01",
+    "translation": "แม้ว่าการใช้พลังงานหมุนเวียนกำลังเร่งตัวขึ้น แต่การพึ่งพาเชื้อเพลิงฟอสซิลยังคงมีอยู่อย่างมีนัยสำคัญ",
+    "words": ["Although", "renewable", "energy", "adoption", "is", "accelerating,", "dependence", "on", "fossil", "fuels", "remains", "significant."],
+    "correct_sentence": "Although renewable energy adoption is accelerating, dependence on fossil fuels remains significant.",
+    "valid_chunks": [
+      ["renewable", "energy"],
+      ["energy", "adoption"],
+      ["is", "accelerating,"],
+      ["dependence", "on"],
+      ["fossil", "fuels"],
+      ["remains", "significant."]
+    ],
+    "explanation": "โครงสร้าง Complex Sentence ในระดับ IELTS: Concession Clause (Although...) + Academic Noun Phrase + Prepositional Collocation (dependence on)"
+  }
+]
