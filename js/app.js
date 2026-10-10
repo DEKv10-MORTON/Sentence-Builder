@@ -52,9 +52,30 @@ function renderWordPool(words) {
   });
 }
 
-// สร้าง Element ของบล็อกคำศัพท์ (Tile) พร้อมฟีเจอร์ Drag & Drop
-function createTileElement(text, id) {
+// สร้าง Element ของบล็อกคำศัพท์ (Tile) พร้อมฟีเจอร์ Drag & Drop และ Unchunk (แยกก้อนคำกลับ)
+function createTileElement(text, id, isChunk = false, originalWords = []) {
   const tile = document.createElement('div');
+
+  if (isChunk) {
+    // สไตล์และพฤติกรรมสำหรับก้อน Chunk สีเขียว (คลิกเพื่อแยกคำออก)
+    tile.className = "px-3.5 py-2 rounded-xl bg-emerald-950/60 border border-emerald-400/60 text-emerald-200 text-xs sm:text-sm font-mono cursor-pointer hover:bg-emerald-900/80 hover:border-emerald-300 transition-all duration-200 select-none shadow-md flex items-center gap-1.5 animate-pop-in group";
+    tile.innerHTML = `<span>${text}</span> <span class="text-[10px] text-emerald-400 group-hover:text-white transition-colors">↩ แยก</span>`;
+    tile.dataset.id = id;
+    tile.dataset.text = text;
+
+    // คลิกที่ก้อนเขียว = แยกคำกลับคืนสู่ Word Pool
+    tile.onclick = () => {
+      tile.remove();
+      const poolEl = document.getElementById('word-pool');
+      originalWords.forEach((w, idx) => {
+        const restoredTile = createTileElement(w, `restored_${Date.now()}_${idx}`);
+        poolEl.appendChild(restoredTile);
+      });
+    };
+    return tile;
+  }
+
+  // สไตล์และพฤติกรรมสำหรับคำเดี่ยวปกติ
   tile.className = "px-3.5 py-2 rounded-xl bg-purple-950/40 border border-purple-500/30 text-purple-100 text-xs sm:text-sm font-mono cursor-grab active:cursor-grabbing hover:bg-purple-900/60 hover:border-purple-400 transition-all duration-200 select-none shadow-sm flex items-center gap-1.5";
   tile.innerText = text;
   tile.dataset.id = id;
@@ -216,8 +237,8 @@ function testChunkPair() {
     sandboxPair[1].el.remove();
 
     const poolEl = document.getElementById('word-pool');
-    const mergedTile = createTileElement(mergedText, `merged_${Date.now()}`);
-    mergedTile.classList.add('border-emerald-400', 'bg-emerald-950/60', 'text-emerald-200');
+    // 👇 แก้ไขเรียกใช้ createTileElement พร้อมเปิดโหมด isChunk และส่งคำต้นฉบับไป
+    const mergedTile = createTileElement(mergedText, `merged_${Date.now()}`, true, [word1, word2]);
     poolEl.appendChild(mergedTile);
 
     sandboxPair = [null, null];
